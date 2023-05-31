@@ -2,6 +2,12 @@ let lastSortedBy = "broj"
 let orderBy = 1
 
 function createTable(jsonData, sortBy) {
+    if (jsonData.length == 0) {
+        let container = document.getElementById("container");
+        container.innerHTML = ''
+        return
+    }
+
     if (lastSortedBy === sortBy) {
         orderBy = -orderBy
     } else {
@@ -49,4 +55,22 @@ function createTable(jsonData, sortBy) {
     });
 
     container.appendChild(table);
+}
+
+function filter() {
+    let filteredData = []
+    let search = document.getElementById("search").value
+    jsonData.forEach(element => {
+        let values = Object.values(element);
+        let found = false
+        values.forEach((value) => {
+            if (value.toString().includes(search)) {
+                found = true
+            }
+        });
+        if (found) {
+            filteredData.push(element)
+        }
+    })
+    createTable(filteredData)
 }
