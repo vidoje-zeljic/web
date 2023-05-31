@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+
+<div>
+    <button id="cnt" onclick="increment()">0</button>
+</div>
+<hr/>
+<div>
+    <button onclick="add()">Add list element</button>
+    <ul id="list"/>
+</div>
+
+<script>
+    let num = 0
+
+    function increment() {
+        // let num = parseInt(document.getElementById("cnt").innerText)
+        document.getElementById("cnt").innerHTML = (++num).toString();
+    }
+
+    function add() {
+        let li = document.createElement("li")
+        li.innerText = num.toString()
+        document.getElementById("list").append(li)
+    }
+</script>
+
+</body>
+</html>
